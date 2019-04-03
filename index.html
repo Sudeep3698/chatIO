@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CHATIO</title>
+        <style>
+            body{
+                background:#f9f9f9;
+            }
+
+            #container{
+                width:700px;
+                margin:0 auto;
+            }
+
+            #chatWindow{
+                height:300px;
+                border:20px #3b5999 solid;
+            }
+
+            #mainWrapper{
+                display:none;
+            }
+
+            #chatWrapper{
+                float:left;
+                border:1px #000 solid;
+                border-radius:10px;
+                background:#f4f4f4;
+                padding:10px;
+            }
+
+            #userWrapper{
+                float:left;
+                border:1px #ccc solid;
+                border-radius:10px;
+                background:#0084ff;
+                font-weight:bold;
+                font-size:20px;
+                color:#ffffff;
+                padding:10px;
+                margin-left:20px;
+                width:150px;
+                max-height:100px;
+            }
+
+            #namesWrapper{
+                float:left;
+                border:1px #ccc solid;
+                border-radius:10px;
+                background:#f4f4f4;
+                padding:10px;
+                margin-left:20px;
+                position:absolute;
+                transform:translate(50%, 50%);
+            }
+
+            input{
+                height:30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="namesWrapper">    <!-- form of the username which will be shown after the loading of the page and everything will be hidden -->
+                <h2>ChatIO</h2>
+                <p>Create Username</p>
+                <div id="error"></div>
+                <form id="usernameForm">
+                    <input size="35" id="username">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+            <div id="mainWrapper">
+                <h2>ChatIO</h2>
+                <div id="chatWrapper">       <!-- layout of the chat window with the messages and the input form -->
+                    <div id="chatWindow"></div>
+                    <form id="messageForm">
+                        <input size="35" id="message" placeholder="Type Something...">
+                        <input type="submit" value="Say It!">
+                    </form>
+                </div>
+
+                <div id="userWrapper">   <!-- List of all the users who are connected to the chat which will be generated dynamically -->
+                    <div id="users"></div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            $(function(){
+                var socket = io.connect();
+                var $messageForm = $('#messageForm');   // to get the message form
+                var $message = $('#message');      // to get the message from the input feild
+                var $chat = $('#chatWindow');
+                var $usernameForm = $('#usernameForm');
+                var $users = $('#users');
+                var $username = $('#username');
+                var $error = $('#error');
+
+                $usernameForm.submit(function(e){
+                    e.preventDefault();  // prevent from submitting
+                    socket.emit('new user', $username.val(), function(data){  // creating new user if any data is filled in the input area for user
+                      if(data){                         // checking if the data(user) is present
+                          $('#namesWrapper').hide();   // username form will be hidden
+                          $('#mainWrapper').show();
+                      } else {
+                          $error.html('Username already taken');
+                      }
+                    });
+                    $username.val('');  // Clearing the value
+                });
+                // Event for getting the usernames
+                socket.on('usernames', function(data){
+                    var html = '';
+                    for(i = 0; i < data.length; i++){
+                      html += data[i] + '<br>';
+                    }
+                    $users.html(html);
+                });
+
+                //Submit event for the message form
+                $messageForm.submit(function(e){
+                    e.preventDefault();  // prevent the form from submitting
+                    socket.emit('send message', $message.val());  //to get the message which the user type in the message input
+                    $message.val('');
+                });
+
+                socket.on('new message', function(data){
+                    $chat.append('<strong>'+ data.user +'</strong>: '+data.msg+'<br>');
+                });
+            });
+        </script>
+    </body>
+</html>
