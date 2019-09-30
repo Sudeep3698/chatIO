@@ -16,3 +16,9 @@ NodeJS(Socket.io node module), HTML5 and CSS3(Frontend or user interface), NPM(n
 ![Screenshot (232)](https://user-images.githubusercontent.com/38180795/65855128-01f82400-e37c-11e9-9cd8-8f67c12de9ec.png)
 ![Screenshot (233)](https://user-images.githubusercontent.com/38180795/65855134-058bab00-e37c-11e9-809b-71ba53ed28b3.png)
 ![Screenshot (234)](https://user-images.githubusercontent.com/38180795/65855138-09b7c880-e37c-11e9-9bfb-d23defe67a2e.png)
+
+In the next screenshot the user (KUMAR) left the chat and got disconnected so you can seen that the message is there in the chat window but the in the user list it has been gone as he is disconnected and after that a new user has joined the chat. 
+
+![Screenshot (235)](https://user-images.githubusercontent.com/38180795/65855564-dc1f4f00-e37c-11e9-8df6-b9af96caa0cd.png)
+![Screenshot (236)](https://user-images.githubusercontent.com/38180795/65855567-de81a900-e37c-11e9-8e88-6284f0390fb4.png)
+![Screenshot (237)](https://user-images.githubusercontent.com/38180795/65855571-e0e40300-e37c-11e9-953e-371fc9436c74.png)
