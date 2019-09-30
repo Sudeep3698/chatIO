@@ -8,3 +8,11 @@ It is same chat application where the multiple users can chat in the chat window
 NodeJS(Socket.io node module), HTML5 and CSS3(Frontend or user interface), NPM(node package manager) - which is used to install the dependencies or node modules.
 
 ## Screenshots
+
+![Screenshot (228)](https://user-images.githubusercontent.com/38180795/65855081-e8ef7300-e37b-11e9-8841-f64b8edd76df.png)
+![Screenshot (229)](https://user-images.githubusercontent.com/38180795/65855105-f3aa0800-e37b-11e9-894d-0d372408473b.png)
+![Screenshot (230)](https://user-images.githubusercontent.com/38180795/65855118-f99fe900-e37b-11e9-834d-3f2b37ff0d2e.png)
+![Screenshot (231)](https://user-images.githubusercontent.com/38180795/65855122-fd337000-e37b-11e9-8859-c7cb72069635.png)
+![Screenshot (232)](https://user-images.githubusercontent.com/38180795/65855128-01f82400-e37c-11e9-9cd8-8f67c12de9ec.png)
+![Screenshot (233)](https://user-images.githubusercontent.com/38180795/65855134-058bab00-e37c-11e9-809b-71ba53ed28b3.png)
+![Screenshot (234)](https://user-images.githubusercontent.com/38180795/65855138-09b7c880-e37c-11e9-9bfb-d23defe67a2e.png)
